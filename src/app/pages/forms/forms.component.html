@@ -1,0 +1,22 @@
+<form class="form">
+	<div class="container">
+		<!-- <mat-form-field appearance="outline"> -->
+		<mat-form-field appearance="fill"> 
+			<!-- by default mat-form-field uses fill behaviour  do not need to use appearance-->
+			<mat-label>Enter your email</mat-label>
+			<input matInput required
+				placeholder="yourmail@example.com"
+				[formControl]="email"
+				(blur)="updateErrorMessage()"
+			/>
+			@if (email.invalid) {
+				<mat-error>{{errorMessage}}</mat-error>
+			}
+		</mat-form-field>
+		<br/>
+		<mat-slide-toggle color="primary"
+			[checked]="email.disabled"
+			(change)="email.disabled ? email.enable() : email.disable()"
+		>Disable Input?</mat-slide-toggle>
+	</div>
+</form>

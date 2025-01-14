@@ -1,0 +1,51 @@
+<mat-grid-list cols="1" rowHeight="90vh">
+  <mat-grid-tile>
+    <div class="stepper-horizontal">
+      <h2>Horizontal Stepper</h2>
+      <mat-stepper linear #stepper>
+        <!-- #docregion editable -->
+        <mat-step [stepControl]="firstFormGroup">
+          <!-- #enddocregion editable -->
+          <form [formGroup]="firstFormGroup">
+            <!-- #docregion step-label -->
+            <ng-template matStepLabel>Fill out your name</ng-template>
+            <!-- #enddocregion step-label -->
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <app-stepper-vertical></app-stepper-vertical>
+  </mat-grid-tile>
+</mat-grid-list>
